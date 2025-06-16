@@ -1,7 +1,7 @@
 # CapRover API for Node.js
 
 ![npm version](https://img.shields.io/npm/v/caprover-api-js.svg)
-![build status](https://img.shields.io/github/actions/workflow/status/your-username/your-repo/ci.yml?branch=main)
+![build status](https://img.shields.io/github/actions/workflow/status/willvin313/your-repo/ci.yml?branch=main)
 ![license](https://img.shields.io/npm/l/caprover-api-js.svg)
 
 A TypeScript-based, promise-driven Node.js library for interacting with the CapRover API.
@@ -192,4 +192,4 @@ To run the test suite locally:
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE.md) file for details.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
