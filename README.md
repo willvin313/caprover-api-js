@@ -4,9 +4,9 @@
 ![build status](https://img.shields.io/github/actions/workflow/status/willvin313/your-repo/ci.yml?branch=main)
 ![license](https://img.shields.io/npm/l/caprover-api-js.svg)
 
-A TypeScript-based, promise-driven Node.js library for interacting with the CapRover API.
+An **UNOFFICIAL** TypeScript-based, promise-driven Node.js library for interacting with the CapRover API.
 
-This library is a port of the excellent Python library caprover-api and aims to provide similar functionality for the JavaScript ecosystem.
+This library is a port of the excellent Python library [caprover-api](https://github.com/ak4zh/Caprover-API) by *ak4zh* and aims to provide similar functionality for the JavaScript ecosystem.
 
 ## Features
 

@@ -1,7 +1,7 @@
 {
   "name": "caprover-api-js",
   "version": "1.0.0",
-  "description": "A TypeScript-based, promise-driven Node.js library for interacting with the CapRover API.",
+  "description": "An unofficial TypeScript-based, promise-driven Node.js library for interacting with the CapRover API.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -11,9 +11,22 @@
     "type": "git",
     "url": "git+https://github.com/willvin313/caprover-api-js.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "caprover",
+    "api",
+    "client",
+    "sdk",
+    "nodejs",
+    "typescript",
+    "automation",
+    "deploy",
+    "deployment",
+    "docker",
+    "paas",
+    "captain"
+  ],
+  "author": "willvin313",
+  "license": "MIT",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/willvin313/caprover-api-js/issues"
