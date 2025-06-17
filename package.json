@@ -1,6 +1,6 @@
 {
     "name": "caprover-api-js",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "An unofficial TypeScript-based, promise-driven Node.js library for interacting with the CapRover API.",
     "main": "./dist/cjs/index.js",
     "types": "./dist/cjs/index.d.ts",
