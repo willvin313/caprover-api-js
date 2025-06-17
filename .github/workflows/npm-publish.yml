@@ -38,7 +38,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # Step 6: Publish the package to npm
+      # Step 6: Update package.json version from the release tag
+      # This command extracts the tag name from the GitHub release (e.g., "v1.0.1"),
+      # removes the "v" prefix, and updates the version in package.json.
+      - name: Update package version
+        run: npm version ${{ github.ref_name }} --no-git-tag-version --no-commit-hooks --allow-same-version
+
+      # Step 7: Publish the package to npm
       # 'npm publish' will read your package.json, include the files specified in the "files" array (i.e., the 'dist' folder), and publish it.
       - name: Publish to npm
         run: npm publish
