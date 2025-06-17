@@ -190,6 +190,9 @@ To run the test suite locally:
 2. Install development dependencies: `npm install`
 3. Run the tests: `npm test`
 
+## Be a Sponsor
+- https://github.com/sponsors/willvin313
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
