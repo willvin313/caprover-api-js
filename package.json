@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "dev": "npx ts-node examples/example.ts",
     "test": "jest"
   },
   "repository": {
