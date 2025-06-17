@@ -3,6 +3,9 @@
 
 name: Node.js Package Publish
 
+permissions:
+  contents: read
+
 on:
   release:
     types: [created]
