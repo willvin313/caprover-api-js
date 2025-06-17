@@ -36,13 +36,23 @@ yarn add caprover-api-js
 
 All methods are asynchronous and return a Promise. It is recommended to use the async/await syntax inside a try/catch block.
 
+### Import
+
+```typescript
+import { CaproverAPI } from 'caprover-api-js';
+```
+
+ OR
+
+```typescript
+const { CaproverAPI } = require('caprover-api-js');
+```
+
 ### Initialization
 
 Unlike the Python version, the constructor is private. You must use the static `CaproverAPI.create()` method to initialize the client. This method handles the asynchronous login process and returns a fully authenticated instance.
 
 ```typescript
-import { CaproverAPI } from 'caprover-api-js';
-
 async function main() {
     try {
         console.log('Connecting to CapRover...');

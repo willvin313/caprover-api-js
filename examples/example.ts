@@ -4,8 +4,8 @@ async function main() {
     try {
         console.log('Connecting to CapRover...');
         const api = await CaproverAPI.create({
-            dashboardUrl: 'https://captain.server.demo.caprover.com',
-            password: 'captain42'
+            dashboardUrl: 'https://captain.pub.radsystems.io',
+            password: 'Admin@123!@#Admin#HackMeNot'
         });
         console.log('Successfully connected!');
 

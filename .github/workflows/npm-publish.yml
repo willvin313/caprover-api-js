@@ -1,38 +1,46 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+# This workflow will install dependencies, run tests, build the project,
+# and then publish a package to the npm registry when a new release is created on GitHub.
 
-name: Node.js Package
+name: Node.js Package Publish
 
 on:
   release:
     types: [created]
 
 jobs:
-  build:
+  publish-to-npm:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
+      # Step 1: Check out the repository's code
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      # Step 2: Set up Node.js. This action also handles caching and creates the .npmrc file for authentication.
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
+          registry-url: "https://registry.npmjs.org/"
+          cache: "npm" # Add caching for faster installs
+
+      # Step 3: Install dependencies using a clean install
+      # 'npm ci' is recommended for CI environments as it uses the package-lock.json for a reproducible build.
+      - name: Install dependencies
+        run: npm ci
+
+      # Step 4: Run the test suite as a quality gate
+      # The workflow will fail here if tests do not pass, preventing a broken package from being published.
+      - name: Run tests
+        run: npm test
+
+      # Step 5: Run the build script
+      # This compiles the TypeScript code from 'src/' into JavaScript in the 'dist/' folder.
+      - name: Build project
+        run: npm run build
+
+      # Step 6: Publish the package to npm
+      # 'npm publish' will read your package.json, include the files specified in the "files" array (i.e., the 'dist' folder), and publish it.
+      - name: Publish to npm
+        run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
