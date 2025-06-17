@@ -1,11 +1,13 @@
-import { CaproverAPI } from '../src/index';
+import { CaproverAPI } from 'caprover-api-js';
+// OR
+// const { CaproverAPI } = require('caprover-api-js');
 
 async function main() {
     try {
         console.log('Connecting to CapRover...');
         const api = await CaproverAPI.create({
-            dashboardUrl: 'https://captain.pub.radsystems.io',
-            password: 'Admin@123!@#Admin#HackMeNot'
+            dashboardUrl: 'https://captain.server.demo.caprover.com',
+            password: 'captain42'
         });
         console.log('Successfully connected!');
 

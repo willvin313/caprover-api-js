@@ -1,8 +1,12 @@
 # CapRover API for Node.js
 
-![npm version](https://img.shields.io/npm/v/caprover-api-js.svg)
+[![npm version](https://img.shields.io/npm/v/caprover-api-js.svg)](https://www.npmjs.com/package/caprover-api-js)
 ![build status](https://img.shields.io/github/actions/workflow/status/willvin313/caprover-api-js/npm-publish.yml?branch=main)
-![license](https://img.shields.io/npm/l/caprover-api-js.svg)
+[![npm downloads](https://img.shields.io/npm/dm/caprover-api-js.svg)](https://www.npmjs.com/package/caprover-api-js)
+[![license](https://img.shields.io/npm/l/caprover-api-js.svg)](./LICENSE)
+
+<!-- [![npm bundle size](https://img.shields.io/bundlephobia/min/caprover-api-js)](https://www.npmjs.com/package/caprover-api-js)
+[![Node.js version](https://img.shields.io/node/v/caprover-api-js)](https://www.npmjs.com/package/caprover-api-js) -->
 
 An **UNOFFICIAL** TypeScript-based, promise-driven Node.js library for interacting with the CapRover API.
 
@@ -201,7 +205,8 @@ To run the test suite locally:
 3. Run the tests: `npm test`
 
 ## Be a Sponsor
-- https://github.com/sponsors/willvin313
+
+- <https://github.com/sponsors/willvin313>
 
 ## License
 

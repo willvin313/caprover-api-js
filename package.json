@@ -6,7 +6,6 @@
     "types": "./dist/cjs/index.d.ts",
     "scripts": {
         "clean": "rm -rf dist",
-        "dev": "npx ts-node examples/example.ts",
         "build": "npm run clean && tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json",
         "test": "jest"
     },
