@@ -1,8 +1,10 @@
 # CapRover API for Node.js
 
+![GitHub top language](https://img.shields.io/github/languages/top/willvin313/caprover-api-js)
 [![npm version](https://img.shields.io/npm/v/caprover-api-js.svg)](https://www.npmjs.com/package/caprover-api-js)
-![build status](https://img.shields.io/github/actions/workflow/status/willvin313/caprover-api-js/npm-publish.yml?branch=main)
+![build status](https://img.shields.io/github/actions/workflow/status/willvin313/caprover-api-js/.github%2Fworkflows%2Fnpm-publish.yml)
 [![npm downloads](https://img.shields.io/npm/dm/caprover-api-js.svg)](https://www.npmjs.com/package/caprover-api-js)
+![npm bundle size](https://img.shields.io/bundlephobia/min/caprover-api-js)
 [![license](https://img.shields.io/npm/l/caprover-api-js.svg)](./LICENSE)
 
 <!-- [![npm bundle size](https://img.shields.io/bundlephobia/min/caprover-api-js)](https://www.npmjs.com/package/caprover-api-js)
