@@ -232,7 +232,33 @@ export class CaproverAPI {
         }
         return response.data;
     }
+    // Add these inside your CaproverAPI class in src/index.ts
 
+    public async addDomain(appName: string, customDomain: string) {
+        console.log(`${appName} | Adding custom domain: ${customDomain}`);
+        const data = { appName, customDomain };
+        const response = await this._retry(() => this.axios.post<CaproverResponse<any>>(CaproverAPI.ADD_CUSTOM_DOMAIN_PATH, data));
+        return this._checkErrors(response.data);
+    }
+
+    public async enableSsl(appName: string, customDomain?: string) {
+        let path: string;
+        let data: object;
+
+        if (customDomain) {
+            console.log(`${appName} | Enabling SSL for custom domain: ${customDomain}`);
+            path = CaproverAPI.ENABLE_CUSTOM_DOMAIN_SSL_PATH;
+            data = { appName, customDomain };
+        } else {
+            console.log(`${appName} | Enabling SSL for default CapRover domain`);
+            path = CaproverAPI.ENABLE_BASE_DOMAIN_SSL_PATH;
+            data = { appName };
+        }
+
+        const response = await this._retry(() => this.axios.post<CaproverResponse<any>>(path, data));
+        return this._checkErrors(response.data);
+    }
+    
     public async updateApp(appName: string, updates: Partial<AppDefinition> & { [key: string]: any }) {
         console.log(`${appName} | Updating app info...`);
 
@@ -255,7 +281,6 @@ export class CaproverAPI {
         const response = await this._retry(() => this.axios.post(CaproverAPI.UPDATE_APP_PATH, data));
         return this._checkErrors(response.data);
     }
-
 
     public async deployApp(appName: string, options: { imageName?: string; dockerfileLines?: string[] }) {
         let definition: any = { schemaVersion: this.schemaVersion };

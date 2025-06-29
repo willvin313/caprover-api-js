@@ -45,6 +45,9 @@ services:
     image: postgres:latest
 `;
 
+const appName = 'my-ssl-app';
+const customDomain = 'test.mydomain.com';
+
 // --- Test Suite ---
 describe('CaproverAPI', () => {
     let api: CaproverAPI;
@@ -256,5 +259,46 @@ describe('CaproverAPI', () => {
 
         // 3. Check that the file was written to the (mocked) file system
         expect(mockedFs.writeFile).toHaveBeenCalledWith(expect.stringContaining('my-backup.tar'), 'backup-file-content');
+    });
+
+    it('test_add_domain: should send the correct request to add a custom domain', async () => {
+        // Arrange
+        mockedAxios.post.mockResolvedValue({ data: mockSuccessResponse() });
+
+        // Act
+        await api.addDomain(appName, customDomain);
+
+        // Assert
+        expect(mockedAxios.post).toHaveBeenCalledWith('/api/v2/user/apps/appDefinitions/customdomain', {
+            appName: appName,
+            customDomain: customDomain,
+        });
+    });
+
+    it('test_enable_ssl_for_custom_domain: should send the correct request for a custom domain', async () => {
+        // Arrange
+        mockedAxios.post.mockResolvedValue({ data: mockSuccessResponse() });
+
+        // Act
+        await api.enableSsl(appName, customDomain);
+
+        // Assert
+        expect(mockedAxios.post).toHaveBeenCalledWith('/api/v2/user/apps/appDefinitions/enablecustomdomainssl', {
+            appName: appName,
+            customDomain: customDomain,
+        });
+    });
+
+    it('test_enable_ssl_for_base_domain: should send the correct request for a default domain', async () => {
+        // Arrange
+        mockedAxios.post.mockResolvedValue({ data: mockSuccessResponse() });
+
+        // Act
+        await api.enableSsl(appName); // Note: no customDomain argument
+
+        // Assert
+        expect(mockedAxios.post).toHaveBeenCalledWith('/api/v2/user/apps/appDefinitions/enablebasedomainssl', {
+            appName: appName,
+        });
     });
 });
