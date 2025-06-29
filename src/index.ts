@@ -258,7 +258,7 @@ export class CaproverAPI {
         const response = await this._retry(() => this.axios.post<CaproverResponse<any>>(path, data));
         return this._checkErrors(response.data);
     }
-    
+
     public async updateApp(appName: string, updates: Partial<AppDefinition> & { [key: string]: any }) {
         console.log(`${appName} | Updating app info...`);
 
@@ -279,6 +279,43 @@ export class CaproverAPI {
         const data = { ...currentAppInfo, ...updates };
 
         const response = await this._retry(() => this.axios.post(CaproverAPI.UPDATE_APP_PATH, data));
+        return this._checkErrors(response.data);
+    }
+
+    /**
+     * Triggers a new build for an app configured to deploy from Git.
+     * This is the programmatic equivalent of clicking the "Save & Update" button.
+     * @param appName The name of the app to trigger the build for.
+     */
+    public async triggerBuild(appName: string) {
+        console.log(`Triggering build process for: ${appName}`);
+
+        // First, we must get the app's details to find its unique push webhook token.
+        const app = await this.getApp(appName);
+
+        if (!app) {
+            throw new Error(`Cannot trigger build: App "${appName}" not found.`);
+        }
+
+        const pushWebhookToken = app.appPushWebhook?.pushWebhookToken;
+
+        if (!pushWebhookToken) {
+            throw new Error(`Cannot trigger build: App "${appName}" does not have a Git repository configured or push webhook enabled.`);
+        }
+
+        // Prepare the request. The API expects the token and namespace as URL query parameters.
+        const params = {
+            namespace: this.captainNamespace,
+            token: pushWebhookToken,
+        };
+
+        // The POST body is empty.
+        const data = {};
+
+        const response = await this._retry(() =>
+            this.axios.post<CaproverResponse<any>>(CaproverAPI.TRIGGER_BUILD_PATH, data, { params })
+        );
+
         return this._checkErrors(response.data);
     }
 
